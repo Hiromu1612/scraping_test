@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>ネットショップのスクレイピング</h1>
+<form method="POST" action="/scraping" >
+    <input id=box type="text" name="search_word" placeholder="商品名を入力" value="">
+    <button class="btn">検索</button>
+</form>
+<div class="navigation">
+    <!-- 階層に分けてナビゲーションの骨組みを作成 -->
+    <ul>
+      <li class="button">
+        <p><a href="/">🏠Home</a></p>
+      </li>
+      <li class="button">
+        <p><a href="https://www.amazon.co.jp/">Amazon</a></p>
+      </li>
+      <li class="button">
+        <p><a href="https://search.rakuten.co.jp/">楽天ショップ</a></p>
+      </li>
+      <li class="button">
+        <p><a href="https://paypayfleamarket.yahoo.co.jp/">PayPayフリマ</a></p>
+      </li>
+    </ul>
+</div>
+
+
+
+<footer class="footer-002">
+<h2>スクレイピングツール</h2>
+      <ul class="footer-002__list">
+          <li>
+              <a href="https://twitter.com/?lang=ja">
+                  <svg class="footer-002__sns-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path fill="#fff"
+                            d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/>
+                  </svg>
+              </a>
+          </li>
+          <li>
+              <a href="https://ja-ks.facebook.com/login/web/">
+                  <svg class="footer-002__sns-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z"/>
+                  </svg>
+              </a>
+          </li>
+          <li>
+              <a href="https://www.instagram.com/">
+                  <svg class="footer-002__sns-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path fill="#ffffff"
+                            d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.25a1.25 1.25 0 0 1-2.5 0 1.25 1.25 0 0 1 2.5 0zM12 4c-2.474 0-2.878.007-4.029.058-.784.037-1.31.142-1.798.332-.434.168-.747.369-1.08.703a2.89 2.89 0 0 0-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.006 9.075 4 9.461 4 12c0 2.474.007 2.878.058 4.029.037.783.142 1.31.331 1.797.17.435.37.748.702 1.08.337.336.65.537 1.08.703.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.474 0 2.878-.007 4.029-.058.782-.037 1.309-.142 1.797-.331.433-.169.748-.37 1.08-.702.337-.337.538-.65.704-1.08.19-.493.296-1.02.332-1.8.052-1.104.058-1.49.058-4.029 0-2.474-.007-2.878-.058-4.029-.037-.782-.142-1.31-.332-1.798a2.911 2.911 0 0 0-.703-1.08 2.884 2.884 0 0 0-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.925 4.006 14.539 4 12 4zm0-2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2z"/>
+                  </svg>
+              </a>
+          </li>
+          <li>
+              <a href="https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent&loginChannelId=1521958360&loginState=kvRyNNKoVHTi6D0HRyiBz3#/">
+                  <svg class="footer-002__sns-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path fill="#fff"
+                            d="M18.663 10.84a.526.526 0 0 1-.526.525h-1.462v.938h1.462a.525.525 0 1 1 0 1.049H16.15a.526.526 0 0 1-.522-.524V8.852c0-.287.235-.525.525-.525h1.988a.525.525 0 0 1-.003 1.05h-1.462v.938h1.462c.291 0 .526.237.526.525zm-4.098 2.485a.538.538 0 0 1-.166.025.515.515 0 0 1-.425-.208l-2.036-2.764v2.45a.525.525 0 0 1-1.047 0V8.852a.522.522 0 0 1 .52-.523c.162 0 .312.086.412.211l2.052 2.775V8.852c0-.287.235-.525.525-.525.287 0 .525.238.525.525v3.976a.524.524 0 0 1-.36.497zm-4.95.027a.526.526 0 0 1-.523-.524V8.852c0-.287.236-.525.525-.525.289 0 .524.238.524.525v3.976a.527.527 0 0 1-.526.524zm-1.53 0H6.098a.528.528 0 0 1-.525-.524V8.852a.527.527 0 0 1 1.05 0v3.45h1.464a.525.525 0 0 1 0 1.05zM12 2.572c-5.513 0-10 3.643-10 8.118 0 4.01 3.558 7.369 8.363 8.007.325.068.769.215.881.492.1.25.066.638.032.9l-.137.85c-.037.25-.2.988.874.537 1.076-.449 5.764-3.398 7.864-5.812C21.313 14.089 22 12.477 22 10.69c0-4.475-4.488-8.118-10-8.118z"/>
+                  </svg>
+              </a>
+          </li>
+          <li>
+              <a href="https://www.youtube.com/?gl=JP&hl=ja">
+                  <svg class="footer-002__sns-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path fill="#fff"
+                            d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+                  </svg>
+              </a>
+          </li>
+      </ul>
+  </nav>
+  <p class="footer-002__copyright">@ 2023 コンピュータ科学基礎</p>
+
+  
+<style>
+
+    h1 {
+        font-size:40px;
+        position: relative;
+        padding: 20px 50px;
+        background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+        background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+        color: white;
+        font-weight: 50px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+    
+    #box{	
+    position:absolute;
+    outline:0;	
+    height:30px;
+    padding:20px; 
+    left:0;
+    top:0; 
+    bottom:0;
+    right:50px;
+    margin:auto;
+    font-size:30px;
+    width:600px;
+    border-radius:30px;
+    background:#eee;
+    }
+
+.btn {
+    position:absolute;
+    width:90px;
+    height:55px;
+    text-align:center;
+    left:480px; 
+    top:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    border-radius:30px;
+    background-image: linear-gradient(90deg, rgba(103, 126, 250, 0.67), rgba(142, 84, 219, 0.87));
+    color:#fff;
+    font-weight:bold;
+    font-size:25px;
+    border:none;
+}
+
+.btn:hover{
+    background:#eee;
+    color:#7fbfff;
+    }
+
+
+.btn:focus {
+        color: transparent;
+    }
+
+.btn:focus::before {
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:0; 
+    top:0;
+    bottom:0;
+    right:0;
+    margin:auto;
+    background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2248%22%20height%3D%2248%22%20fill%3D%22%232589d0%22%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(0%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(45%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.125s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(90%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(135%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.375s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(180%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(225%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.625s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(270%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.75s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(315%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.875s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%3C%2Fsvg%3E') no-repeat center/ 70px;
+    content: '';
+    }
+
+  .navigation{
+    /* flexboxで要素を真ん中に指定 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:20px;
+    justify-content:center;
+    font-size:40px;
+    padding:0px 100px;
+    }
+    .navigation ul {
+      width: 100%;
+    }
+    .button{
+      display: block;
+      padding:0px;
+      width:20%;
+      float:left;
+      /* カーソルを離した際のアニメーションの速度調整 */
+      transition:.2s all;
+    }
+    .button p {
+      height: 10px;
+      font-weight: 100px;
+    }
+    .button a {
+      color:#333333;
+      /* リンク指定した要素のスタイルを削除 */
+      text-decoration:none;
+    }
+    .navigation:hover .button{
+      /* ナビゲーションをマウスオーバーした際のアニメーションの動きを指定 */
+      opacity:.5;
+      /* 全てのボタンが少し小さくなる */
+      transform: scale(.98);
+    }
+    .navigation:hover .button:hover{
+      transition: .5s;
+      /* hover時の速度調整 */
+      transform:scale(1.2);
+      /* hoverしたボタンのみサイズを拡大する指定 */
+      opacity:1;
+    }
+    .navigation:hover .button:hover > p {
+      font-weight: bold;
+    }
+
+    .footer-002 {
+      right:10px;
+      bottom:0;
+      position:absolute;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      font-size:30px;
+      width:100%;
+      background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+      background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+      color: white;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  h2{
+    color:#fff;
+  }
+  
+  .footer-002__logo {
+      width:300px;
+      height: 120px;
+  }
+  
+  .footer-002__list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0 1.5em;
+      list-style-type: none;
+      margin: 0 0 .5em;
+      padding: .5em;
+  }
+  
+  .footer-002__sns-icon {
+      width: 50px;
+      height: 50px;
+  }
+  
+  .footer-002__copyright {
+      margin: 0;
+      color: #ffffffb3;
+      font-weight: 200;
+      font-size: 30px;
+  }
+
+  body{
+    background-color:#FFE4E1;
+  }
+  
+</style>
+
+{% endblock %}
+

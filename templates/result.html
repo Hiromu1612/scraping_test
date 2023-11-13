@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<style>
+    h1{
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        color: #fff;
+        background-image: -webkit-gradient(linear, left top, right top, from(#fa709a), to(#fee140));
+        background-image: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
+        background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+    }
+    table{
+        width: 100%;
+        border-collapse:separate;
+        border-spacing: 0;
+    }
+    
+    table th:first-child{
+        border-radius: 5px 0 0 0;
+    }
+    
+    table th:last-child{
+        border-radius: 0 5px 0 0;
+        border-right: 1px solid #3c6690;
+    }
+    
+    table th{
+        font-size:20px;
+        text-align: center;
+        color:white;
+        background: linear-gradient(#829ebc,#225588);
+        border-left: 1px solid #3c6690;
+        border-top: 1px solid #3c6690;
+        border-bottom: 1px solid #3c6690;
+        box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+        padding:20px;
+    } 
+    
+    table td{
+        max-width: 650px;
+        white-space: nowrap;
+        table-layout: fixed;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        border-left: 1px solid #a8b7c5;
+        border-bottom: 1px solid #a8b7c5;
+        border-top:none;
+        box-shadow: 0px -3px 5px 1px #eee inset;
+        width: 25%;
+        padding: 20px 10px;
+    }
+    
+    table td:last-child{
+        border-right: 1px solid #a8b7c5;
+    }
+    
+    table tr:last-child td:first-child {
+        border-radius: 0 0 0 5px;
+    }
+    
+    table tr:last-child td:last-child {
+        border-radius: 0 0 5px 0;
+    }
+    
+    body {
+        display: block;
+        margin: 100px;
+        background-color:#FFE4E1;
+    }
+    .button-022 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        margin: 0 auto;
+        padding: .9em 2em;
+        border: none;
+        border-radius: 25px;
+        background-image: linear-gradient(144deg, #af40ff, #5b42f2 50%, #00ddeb);
+        color: #fff;
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .button-022:hover{
+        background:#eee;
+        color:#7fbfff;
+        }
+    .button-022:focus {
+        color: transparent;
+    }
+    
+
+</style>
+<h1>スクレイピング結果</h1>
+<table>
+    <tr>
+        <th>サイト</th>
+        <th>商品名</th>
+        <th>価格</th>
+        <th>送料</th>
+        <th>ポイント</th>
+        <th>商品URL</th>
+    </tr>
+
+    <tr>
+        <td>【Amazon】</td><td>{{list_amazon[0]}}</td><td>{{list_amazon[1]}}</td><td>{{list_amazon[2]}}</td><td>{{list_amazon[3]}}</td><td>{{list_amazon[4]}}</td>
+    </tr>
+
+    <tr>
+        <td>【楽天ショップ】</td><td>{{list_rakutenn[0]}}</td><td>{{list_rakutenn[1]}}</td><td>{{list_rakutenn[2]}}</td><td>{{list_rakutenn[3]}}</td><td>{{list_rakutenn[4]}}</td>
+    </tr>
+
+    <tr>
+        <td>【PayPayフリマ】</td><td>{{list_PayPayhurima[0]}}</td><td>{{list_PayPayhurima[1]}}</td><td>{{list_PayPayhurima[2]}}</td><td>{{list_PayPayhurima[3]}}</td><td>{{list_PayPayhurima[4]}}</td>
+    </tr>
+
+</table>
+<div>
+    <p>
+    <form action="/">
+        <button class="button-022">トップページに戻る</button>
+    </form>
+    </p>
+</div>
+{% endblock %}
