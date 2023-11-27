@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
+import re
 #直接コードで呼び出さないためグレー表示
 import chromedriver_binary
 
@@ -10,10 +11,11 @@ options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
 
 #暗黙的な待機
-driver.implicitly_wait(10)
+driver.implicitly_wait(20)
 
+
+#*楽天ショッピングのurlを取得
 def rakutenn(word):
-        #*楽天ショッピングのurlを取得
     print("楽天ショッピング_スクレイピング開始")
     driver.get("https://search.rakuten.co.jp/search/mall?sitem=")
 
@@ -38,16 +40,16 @@ def rakutenn(word):
     product_name_rakutenn=html_rakutenn.find(class_="title-link--3Ho6z")
     price_rakutenn=html_rakutenn.find(class_="price--OX_YW")
     shipping_fee_rakutenn=html_rakutenn.find(class_="free-shipping-label--HpFaT")
-    point_rakutenn=html_rakutenn.find(class_="points--AHzKn")
-    time.sleep(3)
+    #ポイントだけ抽出、正規表現で数字だけ取り出す
+    point=html_rakutenn.find(class_="points--AHzKn")
+    point_rakutenn=re.findall("[0-9]+",point.text)
     url_rakutenn=driver.current_url
 
     #円が邪魔だから消す
     html_rakutenn.find(class_="main-price-unit--1Zd3l main-price-unit-grid--upFyx").decompose()
 
     #リスト化、カンマを取り除いて見やすくする 
-    list_rakutenn=["【"+product_name_rakutenn.text+"】","￥"+price_rakutenn.text,shipping_fee_rakutenn.text,point_rakutenn.text,url_rakutenn]
+    list_rakutenn=["【楽天ショップ】","【"+product_name_rakutenn.text+"】","￥"+price_rakutenn.text,shipping_fee_rakutenn.text,point_rakutenn[0],url_rakutenn]
 
     print("楽天_スクレイピング完了")
-
     return list_rakutenn

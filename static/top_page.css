@@ -1,0 +1,266 @@
+h1 {
+    font-size:40px;
+    position: relative;
+    padding: 20px 50px;
+    background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+    background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+    color: white;
+    font-weight: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+#box{	
+position:absolute;
+outline:0;	
+height:30px;
+padding:20px; 
+left:0;
+top:0; 
+bottom:0;
+right:50px;
+margin:auto;
+font-size:30px;
+width:600px;
+border-radius:30px;
+background:#eee;
+}
+
+.btn {
+position:absolute;
+width:90px;
+height:55px;
+text-align:center;
+left:480px; 
+top:0;
+bottom:0;
+right:0;
+margin:auto;
+border-radius:30px;
+background-image: linear-gradient(90deg, rgba(103, 126, 250, 0.67), rgba(142, 84, 219, 0.87));
+color:#fff;
+font-weight:bold;
+font-size:25px;
+border:none;
+}
+
+.btn:hover{
+background:#eee;
+color:#7fbfff;
+}
+
+
+.btn:focus {
+    color: transparent;
+}
+
+.btn:focus::before {
+position:absolute;
+width:100px;
+height:100px;
+left:0; 
+top:0;
+bottom:0;
+right:0;
+margin:auto;
+background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20width%3D%2248%22%20height%3D%2248%22%20fill%3D%22%232589d0%22%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(0%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(45%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.125s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(90%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.25s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(135%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.375s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(180%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.5s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(225%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.625s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(270%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.75s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%20%3Cpath%20d%3D%22M14%200%20H18%20V8%20H14%20z%22%20transform%3D%22rotate(315%2016%2016)%22%20opacity%3D%22.1%22%3E%20%3Canimate%20attributeName%3D%22opacity%22%20from%3D%221%22%20to%3D%22.1%22%20begin%3D%220.875s%22%20dur%3D%221s%22%20repeatCount%3D%22indefinite%22%2F%3E%20%3C%2Fpath%3E%3C%2Fsvg%3E') no-repeat center/ 70px;
+content: '';
+}
+
+
+
+/*サイドのメニュー・*/
+
+.hamburger-menu div {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+  margin-left: 35px;
+  transition: .5s;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, .7));
+  /* アニメーションの時間を0.5秒に指定 */
+}
+.hamburger-menu:hover div {
+  opacity:0.6;
+  /* 透明度を指定 */
+}
+.hamburger-menu + .sidenavs:target {
+  overflow-x: visible;
+  /* ボックスからはみ出る箇所をそのまま表示 */
+  width: 100%;
+  display:block;
+}
+
+.sidenavs:target {
+  overflow-x: hidden;
+  /* ボックスからはみ出る箇所を隠す */
+  width: 0;
+}
+/* ハンバーガーメニュー表示時 */
+.sidenavs {
+  height:50%;
+  width: 0;
+  position: fixed;
+  /* 画像の配置を指定 */
+  z-index: 1;
+  top: 135px;
+  background-color: #eee;
+  left: 0;
+  overflow-x: hidden;
+  /* 横スクロールを無効にする */
+  padding-top: 60px;
+  transition: 0.6s;
+  /* アニメーションの時間を0.5秒に指定 */
+}
+/* ハンバーガーメニュー表示時のリンク */
+.sidenavs a {
+  padding: 0px 8px 8px 42px;
+  text-decoration: none;
+  font-size: 27px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  /* アニメーションの時間を0.3秒に指定 */
+  font-weight:bold;
+}
+/* マウスオーバー後のリンク */
+.sidenavs a:hover {
+  color: black;
+}
+/* クローズボタン */
+.sidenavs .close-btn {
+  position: absolute;
+  /* 親要素との絶対位置を指定 */
+  top: 0;
+  left: 0;
+  font-size: 45px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, .7);
+}
+  
+
+.footer-002 {
+  right:10px;
+  bottom:0;
+  position:absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size:30px;
+  width:100%;
+  background: -webkit-linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+  background: linear-gradient(to right, rgb(255, 124, 111), #ffc994);
+  color: white;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+h2{
+color:#fff;
+}
+
+.footer-002__logo {
+  width:300px;
+  height: 120px;
+}
+
+.footer-002__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1.5em;
+  list-style-type: none;
+  margin: 0 0 .5em;
+  padding: .5em;
+}
+
+.footer-002__sns-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.footer-002__copyright {
+  margin: 0;
+  color: #ffffffb3;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+body{
+background-color:#f0e0dd;
+}
+
+/* /*チェックボックス */
+.container {
+    max-width: 1000px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 22px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+}
+
+ul.ks-cboxtags {
+    list-style: none;
+    padding: 20px;
+}
+ul.ks-cboxtags li{
+  display: inline;
+}
+ul.ks-cboxtags li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.ks-cboxtags li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+}
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+    content: "\f00c";
+    transition: transform .3s ease-in-out;
+}
+
+
+ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+    border: 2px solid rgb(44, 198, 121);
+    background-color: rgba(0, 255, 128, 0.637);
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.ks-cboxtags li input[type="checkbox"] {
+  display: absolute;
+}
+ul.ks-cboxtags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+  border: 2px solid #e9a1ff;
+}

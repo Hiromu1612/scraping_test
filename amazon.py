@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
+import re
 #直接コードで呼び出さないためグレー表示
 import chromedriver_binary
 
@@ -12,9 +13,8 @@ driver = webdriver.Chrome(options=options)
 #暗黙的な待機
 driver.implicitly_wait(10)
 
-
+#*Amazonのurlを取得
 def amazon(word):
-    #*Amazonのurlを取得
     print("Amazon_スクレイピング開始")
     driver.get("https://www.amazon.co.jp/")
 
@@ -44,11 +44,13 @@ def amazon(word):
     product_name_amazon=html_amazon.find(class_="a-size-base-plus a-color-base a-text-normal")
     price_amazon=html_amazon.find(class_="a-price-whole")
     shipping_fee_amazon=html_amazon.find(class_="a-row a-size-base a-color-secondary s-align-children-center")
-    point_amazon=html_amazon.find(class_="a-size-base a-color-price")
+    #ポイントだけ抽出、正規表現で数字だけ取り出す
+    point=html_amazon.find(class_="a-size-base a-color-price")
+    point_amazon=re.findall("[0-9]+",point.text)
     url_amazon=driver.current_url
 
     #リスト化、カンマを取り除いて見やすくする
-    list_amazon=["【"+product_name_amazon.text+"】","￥"+price_amazon.text,shipping_fee_amazon.contents[1].text,point_amazon.text,url_amazon]
+    list_amazon=["【Amazon】","【"+product_name_amazon.text+"】","￥"+price_amazon.text,shipping_fee_amazon.contents[1].text,point_amazon[0],url_amazon]
 
     print("Amazon_スクレイピング完了")
     return list_amazon

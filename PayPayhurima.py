@@ -12,8 +12,9 @@ driver = webdriver.Chrome(options=options)
 #暗黙的な待機
 driver.implicitly_wait(10)
 
+
+#*PayPayフリマのurlを取得
 def PayPayhurima(word):
-    #*PayPayフリマのurlを取得
     print("PayPayフリマ_スクレイピング開始")
     driver.get("https://paypayfleamarket.yahoo.co.jp/")
 
@@ -30,24 +31,25 @@ def PayPayhurima(word):
     time.sleep(2)
 
     #販売中のみ表示ボタンのタグを取得、クリック
-    btn=driver.find_element_by_css_selector(".sc-3cadff20-4 > .sc-3cadff20-5 .sc-bfe2724c-2")
+    btn=driver.find_element_by_css_selector("#__next > div > div.sc-f4bb2e12-0.hZMyZW.Search__SearchContent > div > div > main > div > div > div.sc-f4bb2e12-4.hgsYgw > div.sc-21098eb2-0.kgfgJF > div.sc-21098eb2-3.lgjiKA > div.sc-21098eb2-4.jLvCLZ > div.sc-21098eb2-5.gZoGQD > label > span.sc-e1dc44f2-1.ePzayz > span > input")
     btn.click()
 
+
     #一番上に出てきた商品画像のタグを取得、クリック なぜかボタンクリックができなかったため、他の方法でクリック
-    btn=driver.find_element_by_css_selector("#itm > a:nth-child(1)")
+    btn=driver.find_element_by_css_selector(".sc-fad0d81d-0:nth-child(1) > .sc-fad0d81d-1")
+    time.sleep(2)
     btn.click()
     #driver.execute_script("arguments[0].click();",btn)
-    time.sleep(6)
+
     #商品名、価格、送料、ポイント、検索結果のurlを表示
     product_name_PayPayhurima=driver.find_element_by_css_selector("#__next > div > main > div.sc-9bae193f-0.eWnaAG.ItemMain__Component > div.sc-9bae193f-1.bgQUin > aside > div.sc-9d0e932e-1.bnkqvI > div.sc-9d0e932e-2.lgdfyj > div.sc-9d0e932e-7.evNHhY > div.sc-9d0e932e-8.hotNPS > h1 > span")
     price_PayPayhurima=driver.find_element_by_css_selector("#__next > div > main > div.sc-9bae193f-0.eWnaAG.ItemMain__Component > div.sc-9bae193f-1.bgQUin > aside > div.sc-9d0e932e-1.bnkqvI > div.sc-9d0e932e-2.lgdfyj > div.sc-9d0e932e-19.iYAaHs > div > div > span")
     shipping_fee_PayPayhurima=driver.find_element_by_css_selector("#__next > div > main > div.sc-9bae193f-0.eWnaAG.ItemMain__Component > div.sc-9bae193f-1.bgQUin > aside > div.sc-9d0e932e-1.bnkqvI > div.sc-9d0e932e-2.lgdfyj > div.sc-dd0e56c9-0.Bjegt > span")
-    point_PayPayhurima="0ポイント"
+    point_PayPayhurima="0"
     url_PayPayhurima=driver.current_url
 
 
     #リスト化、カンマを取り除いて見やすくする
-    list_PayPayhurima=["【"+product_name_PayPayhurima.text+"】","￥"+price_PayPayhurima.text[:-1],shipping_fee_PayPayhurima.text,point_PayPayhurima,url_PayPayhurima]
-
+    list_PayPayhurima=["【PayPayフリマ】","【"+product_name_PayPayhurima.text+"】","￥"+price_PayPayhurima.text[:-1],shipping_fee_PayPayhurima.text,point_PayPayhurima,url_PayPayhurima]
     print("PayPayフリマ_スクレイピング完了")
     return list_PayPayhurima
