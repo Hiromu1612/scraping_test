@@ -7,7 +7,20 @@ import chromedriver_binary
 
 options=Options()
 #optionsの引数に加え、ヘッドレスモードに変え、ブラウザを立ち上げずに実行
-options.add_argument("--headless")
+options.add_argument('--headless')                         
+options.add_argument('--disable-gpu')                      
+options.add_argument('--disable-extensions')               
+options.add_argument('--proxy-server="direct://"')         
+options.add_argument('--proxy-bypass-list=*')              
+options.add_argument('--blink-settings=imagesEnabled=false')
+options.add_argument('--lang=ja')                          
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument("--log-level=3")
+options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36')
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('useAutomationExtension', False)
+options.page_load_strategy = 'eager'
 driver = webdriver.Chrome(options=options)
 
 #暗黙的な待機
@@ -49,7 +62,7 @@ def rakutenn(word):
     html_rakutenn.find(class_="main-price-unit--1Zd3l main-price-unit-grid--upFyx").decompose()
 
     #リスト化、カンマを取り除いて見やすくする 
-    list_rakutenn=["【楽天ショップ】","【"+product_name_rakutenn.text+"】","￥"+price_rakutenn.text,shipping_fee_rakutenn.text,point_rakutenn[0],url_rakutenn]
+    list_rakutenn=["【楽天ショップ】",product_name_rakutenn.text,"￥"+price_rakutenn.text,shipping_fee_rakutenn.text,point_rakutenn[0],url_rakutenn]
 
     print("楽天_スクレイピング完了")
     return list_rakutenn

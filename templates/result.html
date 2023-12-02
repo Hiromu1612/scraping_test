@@ -2,7 +2,6 @@
 {% block body %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='result.css') }}" />
     <h1>スクレイピング結果</h1>
-    
     <table id="table" class="table table-info table-striped table-bordered">
         <thead>
             <tr>
@@ -17,20 +16,37 @@
     
         <tbody>
             <tr>
-                <td>{{list_amazon[0]}}</td><td>{{list_amazon[1]}}</td><td>{{list_amazon[2]}}</td><td>{{list_amazon[3]}}</td><td>{{list_amazon[4]}}</td><td>{{list_amazon[5]}}</td>
+                <td>{{list_amazon[0]}}</td><td>{{list_amazon[1]}}</td><td>{{list_amazon[2]}}</td><td>{{list_amazon[3]}}</td><td>{{list_amazon[4]}}</td><td><a href="{{list_amazon[5]}}">{{list_amazon[5]}}</a></td>
             </tr>
             <tr>
-                <td>{{list_rakutenn[0]}}</td><td>{{list_rakutenn[1]}}</td><td>{{list_rakutenn[2]}}</td><td>{{list_rakutenn[3]}}</td><td>{{list_rakutenn[4]}}</td><td>{{list_rakutenn[5]}}</td>
+                <td>{{list_rakutenn[0]}}</td><td>{{list_rakutenn[1]}}</td><td>{{list_rakutenn[2]}}</td><td>{{list_rakutenn[3]}}</td><td>{{list_rakutenn[4]}}</td><td><a href="{{list_rakutenn[5]}}">{{list_rakutenn[5]}}</a></td>
             </tr>
             <tr>
-                <td>{{list_PayPayhurima[0]}}</td><td>{{list_PayPayhurima[1]}}</td><td>{{list_PayPayhurima[2]}}</td><td>{{list_PayPayhurima[3]}}</td><td>{{list_PayPayhurima[4]}}</td><td>{{list_PayPayhurima[5]}}</td>
+                <td>{{list_PayPayhurima[0]}}</td><td>{{list_PayPayhurima[1]}}</td><td>{{list_PayPayhurima[2]}}</td><td>{{list_PayPayhurima[3]}}</td><td>{{list_PayPayhurima[4]}}</td><td><a href="{{list_PayPayhurima[5]}}">{{list_PayPayhurima[5]}}</a></td>
             </tr>
-        </tbody>
+            <tr>
+                <td>{{list_kakakucom[0]}}</td><td>{{list_kakakucom[1]}}</td><td>{{list_kakakucom[2]}}</td><td>{{list_kakakucom[3]}}</td><td>{{list_kakakucom[4]}}</td><td><a href="{{list_kakakucom[5]}}">{{list_kakakucom[5]}}</a></td>
+            </tr>
+            </tbody>
     </table>
+
+    <!--価格推移グラフスライドショー-->
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/css/6-1-7.css">
     
-    
-    <h2>{{img_url}}</h2>
-    
+    <ul class="slider">
+        <li><img src="{{ url_for('static', filename='price_chart_3month.png') }}" alt="Price Chart 3month"></li>
+        <li><img src="{{ url_for('static', filename='price_chart_1month.png') }}" alt="Price Chart 1month"></li>
+        <li><img src="{{ url_for('static', filename='price_chart_1year.png') }}" alt="Price Chart 1year"></li>
+        <li><img src="{{ url_for('static', filename='price_chart_2year.png') }}" alt="Price Chart 2year"></li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/6-1-7/js/6-1-7.js"></script>
+
     <div>
         <p>
         <form action="/">
@@ -108,4 +124,59 @@
             });
     </script>
 
+    <style>
+        p{
+            padding:0;
+        }
+        body {
+            padding:10px;
+            display: block;
+            margin: 15px;
+            background-color:#f0e0dd;
+        }
+
+        /*矢印の設定*/
+        /*戻る、次へ矢印の位置*/
+        .slick-prev {/*戻る矢印の位置と形状*/
+            left: 28%;
+            transform: rotate(-135deg);
+            position: absolute;/*絶対配置にする*/
+            top: 42%;
+            cursor: pointer;/*マウスカーソルを指マークに*/
+            outline: none;/*クリックをしたら出てくる枠線を消す*/
+            border-top: 10px solid #666;/*矢印の色*/
+            border-right: 10px solid #666;/*矢印の色*/
+            height: 50px;
+            width: 50px;
+            z-index: 1;
+        }
+
+        .slick-next {/*次へ矢印の位置と形状*/
+            right: 28%;
+            transform: rotate(45deg);
+            position: absolute;/*絶対配置にする*/
+            top: 42%;
+            cursor: pointer;/*マウスカーソルを指マークに*/
+            outline: none;/*クリックをしたら出てくる枠線を消す*/
+            border-top: 10px solid #666;/*矢印の色*/
+            border-right: 10px solid #666;/*矢印の色*/
+            height: 50px;
+            width: 50px;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            opacity: 0.4; /* Reduce opacity on hover */
+        }
+        
+        .slick-dots button {
+            color: transparent;
+            outline: none;
+            width:15px;/*ドットボタンのサイズ*/
+            height:15px;/*ドットボタンのサイズ*/
+            display:block;
+            border-radius:50%;
+        }
+
+    </style>
 {% endblock %}
