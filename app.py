@@ -1,6 +1,7 @@
 from flask import Flask, render_template,request
 import concurrent.futures
 from flask_socketio import SocketIO, emit
+import os
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -53,4 +54,5 @@ def do_scraping():
     return render_template('result.html',word=word,list_amazon=list_amazon,list_rakutenn=list_rakutenn,list_PayPayhurima=list_PayPayhurima,list_kakakucom=list_kakakucom,logs=logs)
 
 if __name__ == "__main__":
-    app.run(debug=True,port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
