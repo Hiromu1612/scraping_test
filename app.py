@@ -21,7 +21,7 @@ from concurrent.futures import ThreadPoolExecutor
 import amazon
 import rakutenn
 import PayPayhurima
-
+import kakakucom
 
 @app.route('/scraping', methods=["GET","POST"])
 def do_scraping():
@@ -31,14 +31,14 @@ def do_scraping():
         future_amazon = executor.submit(amazon.amazon, word)
         future_rakutenn = executor.submit(rakutenn.rakutenn, word)
         future_PayPayhurima = executor.submit(PayPayhurima.PayPayhurima, word)
-        
+        future_kakakucom = executor.submit(kakakucom.kakakucom, word)
 
         list_amazon = future_amazon.result()
         list_rakutenn = future_rakutenn.result()
         list_PayPayhurima = future_PayPayhurima.result()
-        
+        list_kakakucom = future_kakakucom.result()
 
-    return render_template('result.html',word=word,list_amazon=list_amazon,list_rakutenn=list_rakutenn,list_PayPayhurima=list_PayPayhurima)
+    return render_template('result.html',word=word,list_amazon=list_amazon,list_rakutenn=list_rakutenn,list_PayPayhurima=list_PayPayhurima,list_kakakucom=list_kakakucom)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
