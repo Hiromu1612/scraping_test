@@ -22,7 +22,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.page_load_strategy = 'eager'
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 
 def kakakucom(word):
     try:

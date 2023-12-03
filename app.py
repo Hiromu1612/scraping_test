@@ -23,7 +23,6 @@ import rakutenn
 import PayPayhurima
 import kakakucom
 
-
 @app.route('/scraping', methods=["GET","POST"])
 def do_scraping():
     word=request.form["search_word"]
