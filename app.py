@@ -22,6 +22,10 @@ import amazon
 import rakutenn
 import PayPayhurima
 import kakakucom
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
 
 @app.route('/scraping', methods=["GET","POST"])
 def do_scraping():
