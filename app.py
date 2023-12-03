@@ -17,28 +17,19 @@ def index():
 #         emit('scraping_progress', {'message': "Amazon_スクレイピング完了"})
 
 
-from concurrent.futures import ThreadPoolExecutor
-import amazon
-import rakutenn
-import PayPayhurima
-import kakakucom
-
 @app.route('/scraping', methods=["GET","POST"])
 def do_scraping():
+    import amazon
+    import rakutenn
+    import PayPayhurima
+    import kakakucom
     word=request.form["search_word"]
 
-    with ThreadPoolExecutor() as executor:
-        future_amazon = executor.submit(amazon.amazon, word)
-        future_rakutenn = executor.submit(rakutenn.rakutenn, word)
-        future_PayPayhurima = executor.submit(PayPayhurima.PayPayhurima, word)
-        future_kakakucom = executor.submit(kakakucom.kakakucom, word)
-
-        list_amazon = future_amazon.result()
-        list_rakutenn = future_rakutenn.result()
-        list_PayPayhurima = future_PayPayhurima.result()
-        list_kakakucom = future_kakakucom.result()
+    list_amazon = amazon.amazon(word)
+    list_rakutenn = rakutenn.rakutenn(word)
+    list_PayPayhurima = PayPayhurima.PayPayhurima(word)
+    list_kakakucom = kakakucom.kakakucom(word)
 
     return render_template('result.html',word=word,list_amazon=list_amazon,list_rakutenn=list_rakutenn,list_PayPayhurima=list_PayPayhurima,list_kakakucom=list_kakakucom)
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
