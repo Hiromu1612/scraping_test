@@ -26,9 +26,10 @@ driver = webdriver.Chrome(options=options)
 driver.implicitly_wait(10)
 
 
-#*PayPayフリマのurlを取得
+
 def PayPayhurima(word):
     try:
+        #*PayPayフリマのurlを取得
         print("PayPayフリマ_スクレイピング開始")
         driver.get("https://paypayfleamarket.yahoo.co.jp/")
 
@@ -71,4 +72,5 @@ def PayPayhurima(word):
     except:
         print("PayPayフリマ_スクレイピング失敗")
         list_PayPayhurima=["【PayPayフリマ】","-","-","-","-","-"]
+        
     return list_PayPayhurima

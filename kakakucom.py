@@ -22,9 +22,10 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.page_load_strategy = 'eager'
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=options)
 
 def kakakucom(word):
+<<<<<<< HEAD
     #*価格コムのurlを取得
     print("価格コム_スクレイピング開始")
     driver.get("https://kakaku.com/")
@@ -57,31 +58,70 @@ def kakakucom(word):
 
     #商品名、価格、送料、ポイント、検索結果のurlを表示
     product_name_kakakucom=driver.find_element_by_class_name("boxL")
+=======
+>>>>>>> 16b468ea18514ee9cfc27338c3550816cf9c62d9
     try:
-        price_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(2) > td.alignR > p.fontPrice")
-    except:
-        price_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-priceBG > div > p.p-PTPrice_price")
-    try:
-        shipping_fee_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(2) > td:nth-child(3) > font")
-    except:
-        shipping_fee_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-shipping > p")
-    #ポイントがない場合は0を返す
-    try:
-        point=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-priceBG > div > p.p-PTPoint > span.p-PTPoint_num")
-        point_kakakucom=re.findall("[0-9]+",point.text)
-        if not point_kakakucom:
-            point_kakakucom = "0"
-        else:
-            point_kakakucom = point_kakakucom[0]
+        #*価格コムのurlを取得
+        print("価格コム_スクレイピング開始")
+        driver.get("https://kakaku.com/")
+
+        #暗黙的な待機
+        driver.implicitly_wait(10)
+
+        #検索欄のタグを取得、wordと入力
+        text_box=driver.find_element_by_id("query")
+        text_box.send_keys(word)
+
+        #暗黙的な待機
+        driver.implicitly_wait(10)
+
+        #検索ボタンのタグを取得、クリック
+        btn=driver.find_element_by_id("main_search_button")
+        btn.click()
+
+        #暗黙的な待機
+        driver.implicitly_wait(10)
+
+        print("価格コム_検索完了")
+
+        #一番上に出てきた商品画像のタグを取得、クリック 
+        btn=driver.find_element_by_class_name("p-result_item_btn")
+        btn.click()
+
+        #暗黙的な待機
+        driver.implicitly_wait(10)
+
+        #商品名、価格、送料、ポイント、検索結果のurlを表示
+        product_name_kakakucom=driver.find_element_by_class_name("boxL")
+        try:
+            price_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(2) > td.alignR > p.fontPrice")
+        except:
+            price_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-priceBG > div > p.p-PTPrice_price")
+        try:
+            shipping_fee_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(2) > td:nth-child(3) > font")
+        except:
+            shipping_fee_kakakucom=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-shipping > p")
+        #ポイントがない場合は0を返す
+        try:
+            point=driver.find_element_by_css_selector("#mainLeft > table > tbody > tr:nth-child(3) > td.p-priceTable_col.p-priceTable_col-priceBG > div > p.p-PTPoint > span.p-PTPoint_num")
+            point_kakakucom=re.findall("[0-9]+",point.text)
+            if not point_kakakucom:
+                point_kakakucom = "0"
+            else:
+                point_kakakucom = point_kakakucom[0]
+
+        except:
+            point_kakakucom="0"
+        url_kakakucom=driver.current_url
+
+
+        #リスト化、カンマを取り除いて見やすくする
+        list_kakakucom=["【価格コム】",product_name_kakakucom.text,price_kakakucom.text,shipping_fee_kakakucom.text,point_kakakucom,url_kakakucom]
+        print("価格コム_スクレイピング完了")
 
     except:
-        point_kakakucom="0"
-    url_kakakucom=driver.current_url
-
-
-    #リスト化、カンマを取り除いて見やすくする
-    list_kakakucom=["【価格コム】",product_name_kakakucom.text,price_kakakucom.text,shipping_fee_kakakucom.text,point_kakakucom,url_kakakucom]
-    print("価格コム_スクレイピング完了")
+        print("価格コム_スクレイピング失敗")
+        list_kakakucom=["【価格コム】","-","-","-","-","-"]
 
 
     #*価格推移を表示
@@ -134,4 +174,5 @@ def kakakucom(word):
         print("価格コム_価格推移取得完了")
     except:
         print("価格コム_価格推移取得失敗")
+        
     return list_kakakucom
