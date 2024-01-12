@@ -61,6 +61,7 @@ def yodobashi(word):
     url_yodobashi=driver.current_url
 
 
+
     #リスト化、カンマを取り除いて見やすくする
     list_yodobashi=["【ヨドバシカメラ】",product_name_yodobashi.text,"￥"+price_yodobashi.text[1:],shipping_fee_yodobashi.text,point_yodobashi[0],url_yodobashi]
     print("ヨドバシカメラ_スクレイピング完了")

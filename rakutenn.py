@@ -60,6 +60,7 @@ def rakutenn(word):
         point_rakutenn=re.findall("[0-9]+",point.text)
         url_rakutenn=driver.current_url
 
+
         #円が邪魔だから消す
         html_rakutenn.find(class_="main-price-unit--1Zd3l main-price-unit-grid--upFyx").decompose()
 

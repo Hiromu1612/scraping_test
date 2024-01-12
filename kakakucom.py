@@ -25,7 +25,7 @@ options.page_load_strategy = 'eager'
 driver = webdriver.Chrome(options=options)
 
 def kakakucom(word):
-<<<<<<< HEAD
+
     #*価格コムのurlを取得
     print("価格コム_スクレイピング開始")
     driver.get("https://kakaku.com/")
@@ -58,8 +58,7 @@ def kakakucom(word):
 
     #商品名、価格、送料、ポイント、検索結果のurlを表示
     product_name_kakakucom=driver.find_element_by_class_name("boxL")
-=======
->>>>>>> 16b468ea18514ee9cfc27338c3550816cf9c62d9
+
     try:
         #*価格コムのurlを取得
         print("価格コム_スクレイピング開始")

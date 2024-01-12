@@ -73,4 +73,5 @@ def PayPayhurima(word):
         print("PayPayフリマ_スクレイピング失敗")
         list_PayPayhurima=["【PayPayフリマ】","-","-","-","-","-"]
         
+        
     return list_PayPayhurima

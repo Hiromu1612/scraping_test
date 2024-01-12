@@ -35,5 +35,6 @@ def do_scraping():
             list_yodobashi = future.result()
     return render_template('result.html',word=word,list_amazon=list_amazon,list_rakutenn=list_rakutenn,list_PayPayhurima=list_PayPayhurima,list_kakakucom=list_kakakucom,list_yodobashi=list_yodobashi)
 
+
 if __name__ == "__main__":
     app.run(debug=True,port=5001)
