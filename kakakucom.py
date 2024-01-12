@@ -31,7 +31,7 @@ def kakakucom(word):
 
     #暗黙的な待機
     driver.implicitly_wait(10)
-    
+
     #検索欄のタグを取得、wordと入力
     text_box=driver.find_element_by_id("query")
     text_box.send_keys(word)
@@ -86,7 +86,7 @@ def kakakucom(word):
 
     #*価格推移を表示
     print("価格コム_価格推移取得開始")
-    directory=r"C:\Users\1612h\.vscode\.vscode\scrap\static"
+    directory=r"C:\Users\1612h\scraping_test\static"
     try:
         btn=driver.find_element_by_class_name("priceRateLink")
         btn.click()
