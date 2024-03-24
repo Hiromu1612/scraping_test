@@ -37,7 +37,7 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 
 ## ユースケース図
-![スクリーンショット (963)](https://github.com/Hiromu1612/scraping_test/assets/150511546/15d10351-da49-4e00-8eeb-7cdcf98dfde9)
+![スクリーンショット (971)](https://github.com/Hiromu1612/scraping_test/assets/150511546/d6cae50c-9d6c-49df-8cb6-18731edde3e3)
 
 
 ## 実際の画面
