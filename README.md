@@ -36,5 +36,6 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 スクレイピングにはPythonが向いていることを知り、paizaや書籍を使って0から独学を始めた。今回はWebアプリを作成したかったため、並行してHTML,CSS,Flaskの勉強もした。デプロイ時にはHeroku(学割で2年間無償)やGitHubの使い方も学んだ。
 
 
-## 動作画面
+## ユースケース図
+![スクリーンショット (963)](https://github.com/Hiromu1612/scraping_test/assets/150511546/15d10351-da49-4e00-8eeb-7cdcf98dfde9)
 
