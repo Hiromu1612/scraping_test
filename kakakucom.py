@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import re
 #直接コードで呼び出さないためグレー表示
 import chromedriver_binary
@@ -22,7 +23,7 @@ options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) App
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
 options.page_load_strategy = 'eager'
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
 
 def kakakucom(word):
 
