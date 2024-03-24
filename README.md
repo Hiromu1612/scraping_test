@@ -40,7 +40,7 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 ![スクリーンショット (978)](https://github.com/Hiromu1612/scraping_test/assets/150511546/dd41650f-04f4-40a6-8d2a-ff4dd56195aa)
 
 
-## 実際の画面
+## 動作画面
 ### トップページ
 
 　・スクレイピングしたいサイトを選択
