@@ -37,7 +37,7 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 
 ## ユースケース図
-![スクリーンショット (971)](https://github.com/Hiromu1612/scraping_test/assets/150511546/d6cae50c-9d6c-49df-8cb6-18731edde3e3)
+![スクリーンショット (978)](https://github.com/Hiromu1612/scraping_test/assets/150511546/dd41650f-04f4-40a6-8d2a-ff4dd56195aa)
 
 
 ## 実際の画面
@@ -47,9 +47,9 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 　・中央下のアイコンから各サイトにアクセス
 
-※検索は45秒ほどかかる
+ ※検索は40秒ほどかかる
 
-![スクリーンショット (975)](https://github.com/Hiromu1612/scraping_test/assets/150511546/39d415b5-67e1-41bb-9bfc-a24b45162e79)
+![スクリーンショット (977)](https://github.com/Hiromu1612/scraping_test/assets/150511546/b868fbae-3055-4793-9998-e32fe5e7689b)
 
 ・左上のハンバーガーメニューから各ショッピングサイトにアクセス
 
@@ -66,7 +66,7 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 ![スクリーンショット (974)](https://github.com/Hiromu1612/scraping_test/assets/150511546/611b2d36-57ec-45b6-a0a0-3272ae25ffb3)
 
 ## 課題
-並列処理などで処理速度を改善したものの、ヨドバシカメラと価格コムはサイト自体の動作が遅く、スクレイピングに30秒ほど多くかかってしまう。
+並列処理などで処理速度を改善したものの、ヨドバシカメラと価格コムはサイト自体の動作が遅く、スクレイピングに20秒ほど多くかかってしまう。
 そのため、レスポンスが遅く(私のPC上では動作するが)、結果画面まで遷移しない。
 
 
