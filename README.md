@@ -42,7 +42,6 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 ## 実際の画面
 ### トップページ
-　・左上のハンバーガーメニューから各ショッピングサイトにアクセス
 
 　・スクレイピングしたいサイトを選択
 
@@ -50,7 +49,12 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 ※検索は45秒ほどかかる
 
-![top](https://github.com/Hiromu1612/scraping_test/assets/150511546/5dc85373-16e6-4b62-a359-247b0c153e4c)
+![スクリーンショット (975)](https://github.com/Hiromu1612/scraping_test/assets/150511546/39d415b5-67e1-41bb-9bfc-a24b45162e79)
+
+・左上のハンバーガーメニューから各ショッピングサイトにアクセス
+
+![スクリーンショット (976)](https://github.com/Hiromu1612/scraping_test/assets/150511546/873401f6-6ebe-4a77-b2fa-def2de5facc4)
+
 
 ### スクレイピング結果ページ
 　・価格、ポイントを押すと昇順・降順の切り替え
@@ -59,8 +63,7 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 　・直近 1か月・3か月・1年・2年の価格推移を動的に表示(価格.comの価格推移をスクリーンショット)
 
-![result](https://github.com/Hiromu1612/scraping_test/assets/150511546/055720f2-4644-4578-ad84-766b0bfb07d6)
-
+![スクリーンショット (974)](https://github.com/Hiromu1612/scraping_test/assets/150511546/611b2d36-57ec-45b6-a0a0-3272ae25ffb3)
 
 ## 課題
 並列処理などで処理速度を改善したものの、ヨドバシカメラと価格コムはサイト自体の動作が遅く、スクレイピングに30秒ほど多くかかってしまう。
