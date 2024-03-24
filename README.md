@@ -39,3 +39,12 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 ## ユースケース図
 ![スクリーンショット (963)](https://github.com/Hiromu1612/scraping_test/assets/150511546/15d10351-da49-4e00-8eeb-7cdcf98dfde9)
 
+
+## 実際の画面
+
+
+
+## 課題
+ヨドバシカメラと価格コムはサイト自体の動作が遅く、スクレイピングに30秒ほど多くかかってしまう。
+ そのため、レスポンスが遅く、(私のPC上では動作するが)結果画面まで遷移しない。
+
