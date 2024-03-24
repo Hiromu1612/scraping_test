@@ -41,8 +41,11 @@ URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 
 ## 実際の画面
-トップページ
-スクレイピング結果ページ
+### トップページ
+![top](https://github.com/Hiromu1612/scraping_test/assets/150511546/5dc85373-16e6-4b62-a359-247b0c153e4c)
+
+### スクレイピング結果ページ
+![result](https://github.com/Hiromu1612/scraping_test/assets/150511546/055720f2-4644-4578-ad84-766b0bfb07d6)
 
 
 ## 課題
