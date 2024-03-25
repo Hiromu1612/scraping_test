@@ -1,77 +1,76 @@
-## ネットショップのスクレイピングアプリ
-### 概要・サイトURL
+## Online shop scraping app
+### Overview/Site URL
  
-　・Amazonや楽天市場、PayPayフリマなどのショッピングサイトの情報をスクレイピング
+・Scraping information from shopping sites such as Amazon, Rakuten Market, PayPay Flea Market, etc.
 
-　・商品名・価格・送料・商品URLを表に一覧化する
+・List product name, price, shipping fee, and product URL in a table
 
-　・価格順・ポイント順に並び替える機能
+・Function to sort by price and points
 
-　・直近1か月・3か月・1年・2年の価格推移を表示する機能
+・Function to display price trends for the last 1 month, 3 months, 1 year, and 2 years
 
 URL: https://scrapingapp-3b15c3abeea4.herokuapp.com/
 
 
 
-## 使用技術
-### 言語系
+## Technology used
+### Language
 
 <img src="https://img.shields.io/badge/-Python-F9DC3E.svg?logo=python&style=flat"> <img src="https://img.shields.io/badge/-HTML5-333.svg?logo=html5&style=flat"> <img src="https://img.shields.io/badge/-CSS3-1572B6.svg?logo=css3&style=flat"> <img src="https://img.shields.io/badge/Javascript-276DC3.svg?logo=javascript&style=flat">
 
-### フレームワーク
+### Framework
 
 <img src="https://img.shields.io/badge/-Flask-000000.svg?logo=flask&style=flat">
 
-### インフラ
+### infrastructure
 
 <img src="https://img.shields.io/badge/-Heroku-430098.svg?logo=heroku&style=plastic">
 
 
 
-## 製作期間・動機
-4か月(2023年10月~2024年1月)
+## Production period/motive
+4 months (October 2023 to January 2024)
 
-大学のコンピュータ科学基礎という授業で、グループで1つの成果物を作ることになったため。
+In a university class called Basics of Computer Science, we were required to create a product as a group.
 
-スクレイピングにはPythonが向いていることを知り、paizaや書籍を使って0から独学を始めた。今回はWebアプリを作成したかったため、並行してHTML,CSS,Flaskの勉強もした。デプロイ時にはHeroku(学割で2年間無償)やGitHubの使い方も学んだ。
+I learned that Python was suitable for scraping, so I started teaching myself from scratch using paiza and books. This time I wanted to create a web application, so I also studied HTML, CSS, and Flask. During deployment, I also learned how to use Heroku (free for 2 years with a student discount) and GitHub.
 
 
-## ユースケース図
+## Use case diagram
 ![スクリーンショット (978)](https://github.com/Hiromu1612/scraping_test/assets/150511546/dd41650f-04f4-40a6-8d2a-ff4dd56195aa)
 
 
-## 動作画面
-### トップページ
+## Operation screen
+### top page
 
-　・スクレイピングしたいサイトを選択
+・Select the site you want to scrape
 
-　・中央下のアイコンから各サイトにアクセス
+・Access each site from the icon at the bottom center
 
- ※検索は40秒ほどかかる
+  *Search takes about 40 seconds
 
 ![スクリーンショット (977)](https://github.com/Hiromu1612/scraping_test/assets/150511546/b868fbae-3055-4793-9998-e32fe5e7689b)
 
-・左上のハンバーガーメニューから各ショッピングサイトにアクセス
+・Access each shopping site from the hamburger menu on the top left
 
 ![スクリーンショット (976)](https://github.com/Hiromu1612/scraping_test/assets/150511546/873401f6-6ebe-4a77-b2fa-def2de5facc4)
 
 
-### スクレイピング結果ページ
-　・価格、ポイントを押すと昇順・降順の切り替え
+### Scraping results page
+・Press the price or point to switch between ascending and descending order
 
-　・スクレイピングした商品のURLにアクセス
+・Access the URL of the scraped product
 
-　・直近 1か月・3か月・1年・2年の価格推移を動的に表示(価格.comの価格推移をスクリーンショット)
+・Dynamically display price trends for the most recent 1 month, 3 months, 1 year, and 2 years (screenshot of price trends on Kakaku.com)
 
 ![スクリーンショット (974)](https://github.com/Hiromu1612/scraping_test/assets/150511546/611b2d36-57ec-45b6-a0a0-3272ae25ffb3)
 
-## 課題
-並列処理などで処理速度を改善したものの、ヨドバシカメラと価格コムはサイト自体の動作が遅く、スクレイピングに20秒ほど多くかかってしまう。
-そのため、レスポンスが遅く(私のPC上では動作するが)、結果画面まで遷移しない。
+## assignment
+Although processing speeds have been improved through parallel processing, the sites of Yodobashi Camera and Kakaku.com are slow, and scraping takes about 20 seconds more.
+As a result, the response is slow (although it works on my PC), and it does not move to the results screen.
 
 
-## 参考になったもの
- ・paizaラーニング Python入門編, Flask入門編
+## Things that were helpful
+  ・paiza Learning Python Introduction, Flask Introduction
  
- ・Python2年生 スクレイピングのしくみ
- 
+  ・Python 2nd year student How scraping works
